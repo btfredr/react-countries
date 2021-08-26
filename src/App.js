@@ -4,15 +4,12 @@ import { API_URL } from "./utils/constants";
 
 function App() {
   const [countries, setCountries] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getCountries = async () => {
       const response = await axios(API_URL);
 
       setCountries(response.data);
-      console.log(response.data);
-      setIsLoading(false);
     };
     getCountries();
   }, []);
@@ -24,7 +21,7 @@ function App() {
           <tr>
             <th>Name</th>
             <th>Region</th>
-            <th>Area</th>
+            <th>Area (m²)</th>
             <th>Population</th>
           </tr>
         </thead>
@@ -42,7 +39,9 @@ function App() {
                 </td>
                 <td>{country.region}</td>
                 <td>{country.area}</td>
-                <td>{country.population}</td>
+                <td>
+                  {Math.round((country.population * 100) / 100).toFixed(1)}
+                </td>
               </tr>
             );
           })}
