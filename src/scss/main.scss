@@ -23,7 +23,7 @@ td {
   border: 1px solid lightgrey;
   text-align: left;
   padding: 8px;
-  font-size: 32px;
+  font-size: 24px;
 }
 
 th {
@@ -34,17 +34,19 @@ td {
   background-color: white;
 }
 
-form {
-  display: flex;
-  gap: 5px;
-}
-
-form td:last-child {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 .countryFlag {
   width: 50px;
   margin-right: 1rem;
+}
+
+.title {
+  text-align: center;
+  padding: 1rem;
+}
+
+.select {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.7rem;
 }

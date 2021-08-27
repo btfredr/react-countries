@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "./utils/constants";
+import Filter from "./components/Filter";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -8,6 +9,7 @@ function App() {
   useEffect(() => {
     const getCountries = async () => {
       const response = await axios(API_URL);
+      console.log(response.data);
 
       setCountries(response.data);
     };
@@ -16,6 +18,8 @@ function App() {
 
   return (
     <div className="appContainer">
+      <h1 className="title">REST Countries</h1>
+      <Filter setCountries={setCountries} />
       <table>
         <thead>
           <tr>
