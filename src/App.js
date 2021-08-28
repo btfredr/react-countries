@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { API_URL } from "./utils/constants";
 import Filter from "./components/Filter";
+import Languages from "./components/Languages";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -32,28 +33,18 @@ function App() {
             return (
               <tr>
                 <td>
-                  <img
-                    src={country.flag}
-                    alt={country.name}
-                    className="countryFlag"
-                  />
+                  <img src={country.flag} alt="" className="countryFlag" />
                   {country.name}
                 </td>
                 <td>{country.region}</td>
                 <td>{country.area}</td>
-                <td>
-                  {Math.abs(country.population) > 999
-                    ? Math.sign(country.population) *
-                        (Math.abs(country.population) / 1000000).toFixed(1) +
-                      "m"
-                    : Math.sign(country.population) *
-                      Math.abs(country.population)}
-                </td>
+                <td>{(country.population / 1000000).toFixed(1)}m</td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <Languages />
     </div>
   );
 }
