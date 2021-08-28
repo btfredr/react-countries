@@ -3,20 +3,21 @@ import axios from "axios";
 
 const Filter = ({ setCountries }) => {
   const filterBy = async (category) => {
-    if (category === "") {
-      return null;
+    if (category === "Filter countries") {
+      const sortCountries = async () => {
+        const response = await axios("https://restcountries.eu/rest/v2/all");
+        setCountries(response.data);
+      };
+      sortCountries();
     } else {
       const sortCountries = async () => {
         const response = await axios(`${API_URL}/?fields=${category}`);
-        console.log(response.data);
-
         setCountries(response.data);
       };
       sortCountries();
     }
   };
 
-  //
   return (
     <div className="filter">
       <select

@@ -16,6 +16,7 @@
 table {
   border-collapse: collapse;
   width: 100%;
+  margin-bottom: 100px;
 }
 
 th,
@@ -49,4 +50,14 @@ td {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 1.7rem;
+  padding: 1em;
+  border-radius: 5px;
+  outline-width: 0;
+  border: none;
+}
+
+.select:hover {
+  cursor: pointer;
+  background-color: lightblue;
+  transition: 0.3s ease-in-out;
 }

@@ -9,8 +9,6 @@ function App() {
   useEffect(() => {
     const getCountries = async () => {
       const response = await axios(API_URL);
-      console.log(response.data);
-
       setCountries(response.data);
     };
     getCountries();
@@ -19,7 +17,7 @@ function App() {
   return (
     <div className="appContainer">
       <h1 className="title">REST Countries</h1>
-      <Filter setCountries={setCountries} />
+      <Filter countries={countries} setCountries={setCountries} />
       <table>
         <thead>
           <tr>
@@ -44,7 +42,12 @@ function App() {
                 <td>{country.region}</td>
                 <td>{country.area}</td>
                 <td>
-                  {Math.round((country.population * 100) / 100).toFixed(1)}
+                  {Math.abs(country.population) > 999
+                    ? Math.sign(country.population) *
+                        (Math.abs(country.population) / 1000000).toFixed(1) +
+                      "m"
+                    : Math.sign(country.population) *
+                      Math.abs(country.population)}
                 </td>
               </tr>
             );
